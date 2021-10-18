@@ -15,9 +15,12 @@ class CreateTbestado extends Migration
     {
         Schema::create('tbestado', function (Blueprint $table) {
             $table->id();
+            $table->integer('pais_id');
             $table->string('sigla');
             $table->string('nome');
             $table->timestamps();
+
+            $table->foreign('pais_id')->references('id')->on('tbpais');
         });
     }
 
