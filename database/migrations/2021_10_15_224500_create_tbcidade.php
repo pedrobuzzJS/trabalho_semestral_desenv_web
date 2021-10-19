@@ -15,12 +15,12 @@ class CreateTbcidade extends Migration
     {
         Schema::create('tbcidade', function (Blueprint $table) {
             $table->id();
-            $table->integer('cidade_id');
+            $table->integer('estado_id');
             $table->string('sigla');
             $table->string('nome');
             $table->timestamps();
 
-            $table->foreign('cidade_id')->references('id')->on('tbestado');
+            $table->foreign('estado_id')->references('id')->on('tbestado');
         });
     }
 
