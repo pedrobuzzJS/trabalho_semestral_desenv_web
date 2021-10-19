@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Pais;
 use Illuminate\Http\Request;
+use App\Http\Controllers\PaisResource;
 
 class PaisController extends Controller
 {
@@ -60,5 +61,10 @@ class PaisController extends Controller
     public function destroy(Pais $pais)
     {
         //
+    }
+
+    public function getPais() {
+        $paisCollection = Pais::findOrFail();
+        return new PaisResource($paisCollection);
     }
 }
