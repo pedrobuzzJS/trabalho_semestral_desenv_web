@@ -62,4 +62,20 @@ class PaisController extends Controller
     {
         //
     }
+
+    public function createPais(Request $request) {
+
+        $pais = new Pais();
+        $pais->sigla = $request->sigla;
+        $pais->nome = $request->nome;
+
+        return response()->json([
+            "message" => "pais criado com sucesso"
+        ], 201);
+    }
+
+    public function getAllPais() {
+        $pais = Pais::get()->toJson(JSON_PRETTY_PRINT);
+        return response($pais, 200);
+    }
 }

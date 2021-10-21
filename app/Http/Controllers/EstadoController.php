@@ -61,4 +61,9 @@ class EstadoController extends Controller
     {
         //
     }
+
+    public function getAllEstado() {
+        $estado = Estado::get()->toJson(JSON_PRETTY_PRINT);
+        return response($estado, 200);
+    }
 }

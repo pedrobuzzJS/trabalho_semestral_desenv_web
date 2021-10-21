@@ -8,6 +8,10 @@ use Illuminate\Support\Facades\DB;
 
 class Pais extends Model
 {
+    use HasFactory;
+
+    public $table = 'tbpais';
+
     protected $fillable = [
         'id',
         'sigla',
@@ -18,9 +22,8 @@ class Pais extends Model
         return $this->hasMany(Estado::class, 'cidade_id', 'id');
     }
 
-    use HasFactory;
 
     public function listaPais() {
-        DB::table('tbpais')->get();
+        DB::table('tbpais')->get()->except('created_at', 'updated_at');
     }
 }
