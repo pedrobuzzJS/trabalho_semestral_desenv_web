@@ -61,4 +61,9 @@ class CidadeController extends Controller
     {
         //
     }
+
+    public function getAllCidade() {
+        $cidade = Cidade::get()->toJson(JSON_PRETTY_PRINT);
+        return response($cidade, 200);
+    }
 }
