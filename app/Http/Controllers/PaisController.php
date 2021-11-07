@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Pais;
+use Dotenv\Repository\RepositoryInterface;
 use Illuminate\Http\Request;
-use App\Http\Resources\PaisResource;
 
 class PaisController extends Controller
 {
@@ -49,7 +49,15 @@ class PaisController extends Controller
      */
     public function update(Request $request, Pais $pais)
     {
-        //
+        $pais = Pais::findOrFail( $request->id );
+        $pais->sigla = $request->sigla;
+        $pais->nome = $request->nome;
+
+        if( $pais->update() ){
+            return response()->json([
+                "message" => "registro alterado comm sucesso"
+            ]);
+        }
     }
 
     /**
@@ -58,9 +66,14 @@ class PaisController extends Controller
      * @param  \App\Models\Pais  $pais
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Pais $pais)
+    public function destroy($id)
     {
-        //
+        $pais = Pais::findOrFail( $id );
+        if( $pais->delete() ){
+            return response()->json([
+                "message" => "registro deletedo com sucesso"
+            ]);
+        }
     }
 
     public function createPais(Request $request) {
@@ -69,9 +82,17 @@ class PaisController extends Controller
         $pais->sigla = $request->sigla;
         $pais->nome = $request->nome;
 
-        return response()->json([
-            "message" => "pais criado com sucesso"
-        ], 201);
+        if ($pais->save()) {
+            return response()->json([
+                "message" => "pais criado com sucessoss"
+            ], 201);
+
+        } else {
+            return response()->json([
+                "message" => "erros ao inserir"
+            ]);
+        }
+
     }
 
     public function getAllPais() {
