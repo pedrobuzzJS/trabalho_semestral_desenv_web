@@ -2,6 +2,6 @@
 
 @section('content')
     <div class="container">
-        <div class="flex">
+        <P>Helo World</P>
     </div>
 @endsection
