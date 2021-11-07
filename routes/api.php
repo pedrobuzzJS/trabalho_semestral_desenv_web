@@ -22,16 +22,17 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::get('/pais', [PaisController::class, 'getAllPais']);
+Route::get('/pais{id}', [PaisController::class, 'getPaisById']);
 Route::post('/pais', [PaisController::class,'createPais']);
 Route::put('/pais/{id}', [PaisController::class, 'update']);
 Route::delete('/pais/{id}', [PaisController::class, 'destroy']);
 
 Route::get('/estado', [EstadoController::class, 'getAllEstado']);
-Route::post('/estado', [PaisController::class,'createEstado']);
-Route::put('/estado/{id}', [PaisController::class, 'update']);
-Route::delete('/estado/{id}', [PaisController::class, 'destroy']);
+Route::post('/estado', [EstadoController::class,'createEstado']);
+Route::put('/estado/{id}', [EstadoController::class, 'update']);
+Route::delete('/estado/{id}', [EstadoController::class, 'destroy']);
 
 Route::get('/cidade', [CidadeController::class, 'getAllCidade']);
-Route::post('/cidade', [PaisController::class,'createCidade']);
-Route::put('/cidade/{id}', [PaisController::class, 'update']);
-Route::delete('/cidade/{id}', [PaisController::class, 'destroy']);
+Route::post('/cidade', [CidadeController::class,'createCidade']);
+Route::put('/cidade/{id}', [CidadeController::class, 'update']);
+Route::delete('/cidade/{id}', [CidadeController::class, 'destroy']);

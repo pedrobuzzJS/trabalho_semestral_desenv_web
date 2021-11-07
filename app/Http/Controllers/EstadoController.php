@@ -48,7 +48,16 @@ class EstadoController extends Controller
      */
     public function update(Request $request, Estado $estado)
     {
-        //
+        $estado = Estado::findOrFail( $request->id );
+        $estado->pais_id = $request->pais_id;
+        $estado->sigla = $request->sigla;
+        $estado->nome = $request->nome;
+
+        if( $estado->update() ){
+            return response()->json([
+                "message" => "registro alterado comm sucesso"
+            ]);
+        }
     }
 
     /**
@@ -57,9 +66,33 @@ class EstadoController extends Controller
      * @param  \App\Models\Estado  $estado
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Estado $estado)
+    public function destroy($id)
     {
-        //
+        $estado = Estado::findOrFail( $id );
+        if( $estado->delete() ){
+            return response()->json([
+                "message" => "registro deletedo com sucesso"
+            ]);
+        }
+    }
+
+    public function createEstado(Request $request)
+    {
+        $estado = new Estado();
+        $estado->pais_id = $request->pais_id;
+        $estado->sigla = $request->sigla;
+        $estado->nome = $request->nome;
+
+        if ($estado->save()) {
+            return response()->json([
+                "message" => "estado criado com sucessoss"
+            ], 201);
+
+        } else {
+            return response()->json([
+                "message" => "erros ao inserir"
+            ]);
+        }
     }
 
     public function getAllEstado() {

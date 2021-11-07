@@ -99,4 +99,9 @@ class PaisController extends Controller
         $pais = Pais::get()->toJson(JSON_PRETTY_PRINT);
         return response($pais, 200);
     }
+
+    public function getPaisById($id) {
+        $pais = Pais::findOrFail($id)->get()->toJson(JSON_PRETTY_PRINT);
+        return response($pais, 200);
+    }
 }
