@@ -14,7 +14,7 @@ class EstadoController extends Controller
      */
     public function index()
     {
-        //
+        return view('estado.index');
     }
 
     /**

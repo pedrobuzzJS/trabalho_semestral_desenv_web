@@ -1,6 +1,9 @@
 <?php
 
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\PaisController;
+use App\Http\Controllers\EstadoController;
+use App\Http\Controllers\CidadeController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,6 +17,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Controller da Home
+// Controller Pais
 
-Route::get('/', [HomeController::class, 'index']);
+Route::get('/', [HomeController::class, 'index'])->name('home');
+
+// Controller Estado
+
+Route::get('/estado', [EstadoController::class, 'index'])->name('estado');
+
+// Controller Cidade
+
+Route::get('/cidade', [CidadeController::class, 'index'])->name('cidade');

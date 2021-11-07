@@ -17,10 +17,10 @@
 @yield('content')
 
 <!-- FOOTER -->
-<footer class="container">
+{{-- <footer class="footer">
     <p class="float-end"><a href="#">Back to top</a></p>
     <p>&copy; {{date('Y')}}, Inc. &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
-</footer>
+</footer> --}}
 
 
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
